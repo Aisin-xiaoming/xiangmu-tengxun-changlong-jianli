@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+</head>
+<body>
+	<script>
+		var users=[
+			{
+				name:'张三',
+				age: 20
+			},
+			{
+				name:'李四',
+				age: 43
+			},
+			{
+				name:'王五',
+				age: 40
+			}
+		]
+		//根据年龄排序
+		// var users2 = [];
+		// sortBy对users的age属性进行升序排序 _指的就是lodash
+		users = _.sortBy(users,['age']);
+		console.log(users);
+	</script>
+</body>
+</html>

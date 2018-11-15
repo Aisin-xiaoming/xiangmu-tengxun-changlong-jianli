@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="lib/vue.js"></script>
+</head>
+<body>
+	<!-- 在页面中 需要把vue解析的代码块标起来。 -->
+	<div id="app">
+		<!-- 双括号的意思是在vue的data的作用域空间找到相应的变量的值 -->
+		我的名字是：{{name}},我的年龄为：{{age}}
+	</div>
+
+	<script>
+		// 1.new一个Vue的实例对象
+		var vm = new Vue({
+			el: '#app',
+			data:{
+				name: '张三',
+				age: 30
+			}
+		})
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>def</h1>
+	<!-- <form action=""> -->
+		<!-- 如果使用了ajax 那么不需要form也不需要name属性 -->
+		用户名:<input type="text" class="username" name="username"><br>
+		age: <input type="text" class="age" name="age">
+		<button class="sub" type="button">保存</button><br>
+		<button class="sub2" type="button">保存2</button>
+	<!-- </form> -->
+	<a href="/abc">跳转到列表页面</a>
+	<script src="/js/util.js"></script>
+	<script>
+		//把表单的提交形式改为ajax形式
+		var btn = document.querySelector('.sub')
+		var btn2 = document.querySelector('.sub2')
+		btn.onclick = function(){
+			var username = document.querySelector('.username').value;
+			var age = document.querySelector('.age').value;
+			var xhr = new XMLHttpRequest();
+			//get请求的参数  在地址栏 形式: xxx?key1=v1&key2=v2&key3=v3...
+			// 提交的时候一般使用post  post的参数实在请求体里保存的
+			xhr.open('post','/saveUser');
+			//post需要写 直接复制粘贴
+			xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			// post的参数需要send来发送
+			xhr.send(`username=${username}&age=${age}`);
+			xhr.onreadystatechange = function(){
+				if (xhr.readyState == 4 && xhr.status == 200) {
+					//注意: 原生ajax返回的数据类型是字符串
+					var rs = xhr.responseText;
+					//转成对象模式
+					var rsObj = JSON.parse(rs);
+					if(rsObj.err == 0){
+						alert('保存成功!');
+					}else{
+						alert('保存失败!');
+					}
+				}
+			}
+		}
+
+		btn2.onclick = function(){
+			var username = document.querySelector('.username').value;
+			var age = document.querySelector('.age').value;
+			myAjax({
+				url:'/saveUser',
+				type:'post',
+				data:{
+					username:username,
+					age:age
+				},
+				fn:function(res){
+					console.log('收到myajax结果为===>');
+					console.log(res);
+				}
+			})
+		}
+
+		
+	</script>
+</body>
+</html>

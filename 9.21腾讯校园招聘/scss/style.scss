@@ -1,0 +1,784 @@
+@import "common.scss";
+
+@function p2r($px) {
+  @return $px/75+rem;
+}
+*{margin:0;}
+.body{
+  position: relative;
+  font-size: 16px;
+  font-family: 'Helvetica','microsoft yahei', sans-serif;
+  width: 100%;
+  height: 100%;
+  color:#fff;
+  overflow:hidden;
+
+}
+// body .container .banner.active{
+//     display: block;
+// }
+
+html{
+  font-size: 16px;
+  color:#fff;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  // text-rendering: optimizeLegibility;
+  // -moz-osx-font-smoothing: grayscale;
+  // font-smoothing: antialiased;
+  // -webkit-font-smoothing: antialiased;
+}
+ul{
+  list-style: none;
+}
+.bg{
+    position: absolute;
+    background: url("../img/bg.png") center no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+
+
+}
+.bg_0{
+   position: absolute;
+   background: url("../img/bg-0.png") center center no-repeat;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    animation: roating_week_animate 5s ease  infinite;
+
+}
+// 圆周边的特效整体
+.wave{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  margin-left: 10%;
+// 多条线item
+  .item{
+    position: absolute;
+    border: 1px solid #63c8f4;
+    border-radius: 50%;
+    width: 888px;
+    height: 888px;
+    left: 12%;
+    top: -20%;
+    opacity: 0;
+// 不同线的动画
+  }.item_0{
+    animation-delay: 0s;
+    animation:wave_animate 2s ease-out infinite;
+  }.item_1{
+    animation-delay: 0.8s;
+      animation:wave_animate 4s ease-out infinite;
+  }.item_2{
+    animation-delay: 1.6s;
+    animation:wave_animate 6s ease-out infinite;
+  }.item_3{
+    animation-delay: 2.4s;
+    animation:wave_animate 8s ease-out infinite;
+  }.item_5{
+    animation-delay: 3.2s;
+    animation:wave_animate 10s ease-out infinite;
+  }.item_6{
+    animation-delay: 4s;
+    animation:wave_animate 12s ease-out infinite;
+  }.item_7{
+    animation-delay: 5.6s;
+    animation:wave_animate 14s ease-out infinite;
+  }.item_8{
+    animation-delay: 6.4s;
+    animation:wave_animate 16s ease-out infinite;
+  }
+}
+@keyframes wave_animate{
+  0%{
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  20%{
+    opacity: 0.9;
+  }
+  60%{
+    opacity: 0.1;
+  }
+  100%{
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+.bg_1{
+  position: absolute;
+  background: url("../img/bg-1.png") right bottom no-repeat;
+  width: 80%;
+  height: 160%;
+  left: 0;
+  bottom:-30%;
+  opacity: 0.9;
+  animation: roating_back_animate ease  5s infinite ;
+
+
+
+
+}
+.bg_2{
+  position: absolute;
+  background: url("../img/bg-2.png") right bottom no-repeat;
+  width: 80%;
+  height: 80%;
+  left: -40%;
+  bottom: 75%;
+  background-size: contain;
+  animation: roating_animate ease  5s infinite ;
+
+}
+.bg_3{
+  position: absolute;
+  background: url("../img/bg-3.png")  no-repeat;
+  width: 613px;
+  height: 607px;
+  right: -270px;
+  bottom: 65%;
+  animation: roating_all_animate ease  5s infinite ;
+
+}
+// 背景动画
+//_0
+@keyframes roating_week_animate{
+  0%{
+    transform: translate3d(0,0,0) scale(1,1);
+  }
+  50%{
+    transform: translate3d(10px,0,0) scale(1,1);
+  }
+  100%{
+    transform: translate3d(0,0,0) scale(1,1);
+  }
+}
+//_1
+@keyframes roating_back_animate{
+  0%{
+    transform: rotate(0) scale(1);
+  }
+  25%{
+    transform: rotate(-6deg) scale(0.9)translate3d(10px,-10px,0);
+  }
+  50%{
+    transform: rotate(-2deg) scale(1.1);
+  }
+  75%{
+    transform: rotate(-6deg) scale(0.9)translate3d(10px,-10px,0);;
+  }
+  100%{
+    transform: rotate(0) scale(1);
+  }
+}
+//_2
+@keyframes roating_animate{
+  0%{
+        transform: rotate(0) scale(1);
+  }
+  50%{
+        transform: rotate(6deg) scale(0.9,1.1) translate3d(10%,-16%,30px);
+  }
+  100%{
+        transform: rotate(0) scale(1);
+  }
+
+}
+//_3
+@keyframes roating_all_animate{
+  0%{
+    transform: rotate(0) scale(1) translate3d(0,0,0);
+  }
+  25%{
+    transform: rotate(90deg) scale(1.3,0.6) translate3d(-10px,-40px,10px);
+  }
+  50%{
+    transform: rotate(0) scale(1,1) translate3d(40px,-20px,20px);
+  }
+  75%{
+    transform: rotate(90deg) scale(1.2,0.8) translate3d(-10px,-40px,10px);
+  }
+  100%{
+    transform: rotate(90deg) scale(1.2,0.8) translate3d(-10px,-40px,10px);
+  }
+
+}
+// 头部
+.header{
+  position: absolute;
+  left: 100px;
+
+  top: 50px;
+
+  z-index: 300;
+  overflow: hidden;
+
+  a{
+    color:#fff;
+    text-decoration:none;
+  }
+}
+.header .logo{
+
+    background: url("../img/logo.png") center center no-repeat;
+    background-size: contain;
+    width: 230px;
+    height: 31px;
+    float: left;
+    margin-right: 40px;
+    opacity: 1;
+
+}
+.nav{
+  font-size: 16px;
+  float: left;
+
+}
+.nav li{
+    float: left;
+    margin:0 22px;
+
+}
+.nav li a{
+    text-decoration: none;
+    color: #fff;
+
+    float: left;
+    padding-bottom: 8px;
+
+}
+
+.container{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  // background: url('../img/bg.jpg') center no-repeat;
+  z-index: 1;
+  .member{
+    position: absolute;
+    top:6px;
+    right: 0;
+
+  }
+
+}
+
+// 给banner添加激活样式成块显示出来
+body .container .banner.active{
+  display: block;
+}
+.container .banners{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+// banner几个模板之间相互切换
+    .banner{
+        display: none;
+        position: relative;
+        &.active{
+           display: block;
+       }
+       // banner的news宽高
+
+    }.news{
+      width: 100%;
+      height: 100%;
+    }
+
+}
+
+
+// banner的球位置
+.news .slogan{
+    background: url("../img/home_main.png") center center no-repeat;
+    background-size: contain;
+    height: 54%;
+    width: 54%;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+
+}
+// 球和图片的动画bounceIn
+@keyframes bounceIn {
+
+  0% {
+    opacity: 0;
+    // -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  20% {
+    // -webkit-transform: scale3d(1.1, 1.1, 1.1);
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  40% {
+    // -webkit-transform: scale3d(0.9, 0.9, 0.9);
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+
+  60% {
+    opacity: 1;
+    // -webkit-transform: scale3d(1.03, 1.03, 1.03);
+    transform: scale3d(1.03, 1.03, 1.03);
+  }
+
+  80% {
+    // -webkit-transform: scale3d(0.97, 0.97, 0.97);
+    transform: scale3d(0.97, 0.97, 0.97);
+  }
+
+  to {
+    opacity: 1;
+    // -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.bounceIn {
+  // -webkit-animation-duration: 0.75s;
+  animation-duration: 0.75s;
+  // -webkit-animation-name: bounceIn;
+  animation-name: bounceIn;
+}
+// 第二屏动画
+// @keyframes slideInRight{
+//
+// }
+
+
+// banner的图片字体
+.news .slogan_title{
+    background: url("../img/slogan@2x.png") center center no-repeat;
+    background-size: contain;
+    height: 32%;
+    width: 32%;
+    margin: auto;
+    top: -10%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    -webkit-animation-delay: 0.4s;
+    -moz-animation-delay: 0.4s;
+    -o-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+}
+// 一条斜线
+.timeline{
+  width: 60%;
+  height: 15%;
+  background-size: contain;
+  position: absolute;
+  top: 60%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  -webkit-animation-delay: 0.2s;
+  -moz-animation-delay: 0.2s;
+  -o-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+.wrap_process_circle{
+    width: 27.8%;
+    height: 5px;
+    position: relative;
+    background: -webkit-linear-gradient(to right, rgba(255, 243, 34, 0), #fff620);
+    background: -o-linear-gradient(to right, rgba(255, 243, 34, 0), #fff620);
+    background: -moz-linear-gradient(to right, rgba(255, 243, 34, 0), #fff620);
+    background: linear-gradient(to right, rgba(255, 243, 34, 0), #fff620);
+}
+// 线上的小圆点图片
+.process_circle{
+    background: url("../img/process_circle.png") no-repeat;
+    width: 34px;
+    height: 34px;
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    background-size: contain;
+}
+.wrap_timeline_text{
+    padding: 0 20%;
+}
+.timeline .time_point{
+    width: 25%;
+    float: left;
+    font-size: 18px;
+}
+.timeline .data{
+
+}
+// 一条长线bar
+.timeline .wrap_process_bar{
+    width: 100%;
+    height: 5px;
+    margin-bottom: 20px;
+    background: url("../img/bg_process_bar.png") center center no-repeat;
+    background-size: contain;
+    transform: (skew(0,-6deg));
+}
+.timeline_1 .wrap_process_circle{
+    width: 28%;
+}
+.timeline_2 .wrap_process_circle{
+    width: 43%;
+}
+.timeline_3 .wrap_process_circle{
+    width: 58%;
+}
+.timeline_4 .wrap_process_circle{
+    width: 72.8%;
+}
+.news .btns{
+    position: absolute;
+    top: 80%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 380px;
+}
+.news .btns .btn{
+    display: block;
+    border-radius: 28px;
+    float: left;
+    width: 168px;
+    height: 56px;
+    line-height: 56px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 2rem;
+    -webkit-transform: translateZ(0);
+}
+.btn_s{
+    background: #fff200;
+    color: #0765c8;
+    margin-right: 40px;
+}
+.btn_k{
+  border:1px solid #fff;
+  color:#fff;
+
+}
+// 第二屏jobs内容
+.container .banners{
+  .jobs{
+    width: 100%;
+    height: 100%;
+    background: rgba(6, 169, 208, 0.65);
+    transition: all ease-in 1s;
+
+    .wrap_jobs{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 70%;
+    height: 46%;
+// 左图hover的时候往Y轴方向移动
+      .left{
+        &:hover{
+          #post_left{
+            // 上面图片字
+            .job_title_left{
+              transform:translateY(-20px);
+              transition: all ease-in .6s;
+            }
+            // 右边大图片
+          }.wrap_job_bg_left{
+            transform:translateX(20px);
+            transition: all ease-in .6s;
+          }
+          // 字体出现opacity:1;
+          #post_left{
+            .job_list_left{
+               opacity: 1;
+               transform:translateY(20px);
+               transition:all ease-in .6s;
+               color: #d9b512;
+            }
+          }
+        }
+
+// 右图hover实现移动
+    }.right{
+      &:hover{
+        #post_right{
+          // 上面图片字
+          .job_title_right{
+            transform:translateY(-20px);
+            transition: all ease-in 1s;
+          }
+          // 右边大图片
+        }.wrap_job_bg_right{
+          transform:translateX(20px);
+          transition: all ease-in 1s;
+        }
+        #post_right{
+          .job_list_right{
+             opacity: 1;
+             transform:translateY(20px);
+             transition:all ease-in 1s;
+          }
+        }
+      }
+    }
+    .wrap_job{
+    float: left;
+    width: 36%;
+    height: 90%;
+    padding: 5%;
+    background-color: #fff;
+    border-radius: 10px;
+    position: relative;
+
+
+    .wrap_job_bg_left{
+    position: absolute;
+    width: 110%;
+    height: 100%;
+    overflow: hidden;
+    right: 0;
+    bottom: -10%;
+    .job_bg_left{
+    background: url("../img/bg_job_left.png") bottom right no-repeat;
+    background-size: auto 100%;
+    width: 100%;
+    height: 90%;
+    // transform:translate3d(0px,0px,0px);
+    // opacity:1;
+
+}
+}
+}
+}
+}
+}
+// 第二屏右边内容
+.container .banners .jobs .wrap_jobs .wrap_job_right {
+    float: right;
+    width: 36%;
+    height: 90%;
+    padding: 5%;
+    background-color: #fff;
+    border-radius: 10px;
+    position: relative;
+    .wrap_job_bg_right {
+      position: absolute;
+      width: 110%;
+      height: 100%;
+      overflow: hidden;
+      right: 0;
+      bottom: 0;
+    .job_bg_right{
+      background: url("../img/bg_job_right.png") bottom right no-repeat;
+      float: right;
+      background-size: auto 100%;
+      width: 100%;
+      height: 90%;
+
+    }
+  }.post_right {
+    height: 100%;
+    border-radius: 10px;
+    position: relative;
+    top: 0;
+    right: 0;
+    .job_title_right {
+        background: url("../img/sxszp.png") no-repeat;
+        background-size: contain;
+        width: 205px;
+        height: 60px;
+
+    }.job_list {
+        opacity: 0;
+        font-size: 12px;
+        line-height: 60px;
+        margin-top: 40px;
+        margin-left: 4px;
+        // 字体样式
+        a{
+          color: #2762f3;
+          font-size:18px;
+          text-decoration: none;
+          cursor: pointer;
+        }
+
+      }
+
+  }
+
+}
+// 第二屏左边图字
+.container .banners .jobs .wrap_jobs .wrap_job .job_post {
+    height: 100%;
+    border-radius: 10px;
+    position: relative;
+    .job_title_left {
+    background: url("../img/xyzp.png") no-repeat;
+    background-size: contain;
+    width: 205px;
+    height: 60px;
+  }
+// ul里面li字体出现
+.job_list {
+    opacity: 0;
+    font-size: 12px;
+    line-height: 60px;
+    margin-top: 40px;
+    margin-left: 4px;
+    // 字体样式
+    a{
+      color: #2762f3;
+      font-size:20px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+  }
+
+}
+// 第三屏
+.container .banners .wrap_talks {
+    position: absolute;
+    width: 90%;
+    height: 70%;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    .cont_talks {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: 0;
+    top: 0;
+     .bg_talks {
+       width: 100%;
+       height: 100%;
+    animation-duration: 0.5s;
+    background: url("../img/bg_talks.png") center center no-repeat;
+    background-size: contain;
+}
+}
+}
+
+// 底部栏目
+.wrap_buttons{
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    // 小白线
+    .sm {
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+    .i {
+    position: absolute;
+    display: block;
+    left: 0;
+    top: -2px;
+    width: 33.33%;
+    height: 4px;
+    border-radius: 2px;
+    background: #fff;
+    transition: all 300ms;
+  }
+
+}
+}
+.buttons{
+    padding: 0 100px 0 100px;
+    width: 80%;
+    margin: 0 auto;
+// 鼠标监听点击事件
+    .mask{
+        position: absolute;
+        left: 0;
+        top: 0;
+        // background-color: #fff;
+        width: 33.33%;
+        height: 100%;
+        z-index: 2;
+    }
+}
+// 底部li样式
+.buttons li{
+    position: relative;
+    height: 50px;
+    line-height: 50px;
+    float: left;
+    width: 33.33%;
+    text-align: center;
+    opacity: 1;
+    a{
+      color: #2762f3;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+}
+.buttons li.active{
+    opacity: 1;
+}
+.buttons li:hover{
+    opacity: 1;
+}
+.buttons li.active:before{
+    width: 300px;
+    height: 6px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: -3px;
+}
+// 轮播两边的点击箭头图片
+.btns_slider{
+
+}
+.btns_slider.btn{
+    display: block;
+    position: absolute;
+    opacity: 0.9;
+}
+.btns_slider .btn:hover{
+    opacity: 1;
+}
+.btns_slider .btn_prev{
+    position: absolute;
+    top: 50%;
+    background: url("../img/btn_prev.png") no-repeat;
+    width: 26px;
+    height: 47px;
+    left: 60px;
+    display: none;
+}
+.btns_slider .btn_next{
+    position: absolute;
+    top: 50%;
+    background: url("../img/btn_next.png") no-repeat;
+    width: 26px;
+    height: 47px;
+    right: 60px;
+}
+// 动画

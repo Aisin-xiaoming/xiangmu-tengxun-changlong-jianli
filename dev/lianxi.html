@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	
+</head>
+<body>
+<script>
+// 	//去重方法函数
+// Array.prototype.distinct = function (){
+//  var arr = this,
+//   result = [],
+//   len = arr.length;
+//  arr.forEach(function(v, i ,arr){  //这里利用map，filter方法也可以实现
+//   var bool = arr.indexOf(v,i+1);  //从传入参数的下一个索引值开始寻找是否存在重复
+//   if(bool === -1){
+//    result.push(v);
+//   }
+//  })
+//  return result;
+// };
+
+
+
+// 	var arr1 = [4,5,6];
+// 	var arr2 = [5,8,5,4];
+// 	concatArr(arr1,arr2);//调用函数
+// 	//concatArr合并数组的函数
+// function concatArr(arr1, arr2){
+// 	  var arr = arr1.concat(arr2);
+// 	  console.log(arr);
+// 	  //去重引用
+//   		arr = arr.distinct();
+// 	  console.log(arr);
+//   		//再引用上面的任意一个去重方法
+// 	  return arr;
+// };
+
+
+ 
+
+
+// var a = [4,5,6,5,8,5,4];
+// var b = a.distinct();
+// console.log(b); //[6,8,5,4]
+// console.log(b.toString());  //6,8,5,4 字符串
+ 
+
+
+ 		//去重方法函数
+Array.prototype.distinct = function (){
+ var arr = this,
+  result = [],
+  len = arr.length;
+ arr.forEach(function(v, i ,arr){  //这里利用map，filter方法也可以实现
+  var bool = arr.indexOf(v,i+1);  //从传入参数的下一个索引值开始寻找是否存在重复
+  if(bool === -1){
+   result.push(v);
+  }
+ })
+ return result;
+};
+
+	var a = [1, 2, 3];
+	var b = [4,4, 5, 6];
+	var bbb = Array.prototype.push.apply(a, b);
+	console.log(a);
+	//a=[1,2,3,4,5,6]
+	//等效于:a.push.apply(a, b);
+	//也等效于[].push.apply(a, b); 
+	concatArray(a,b);
+	function concatArray(arr1,arr2){
+		// var str = '';
+	   Array.prototype.push.apply(arr1, arr2);
+	  console.log(arr1);
+	 
+	  arr1 =arr1.distinct;
+	  console.log(arr1);
+	  
+	  return arr1;
+	};
+
+</script>
+</body>
+</html>

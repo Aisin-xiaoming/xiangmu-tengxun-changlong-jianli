@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style>
+    	p{
+    		color:red;
+    	}
+    </style>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <h2>欢迎来到不凡学院!啦啦我悄悄地来到你的身旁!</h2>
+    <p>Welcome to <%= title %></p>
+	<div class="img-block">
+		<img src="<%= img %>" alt="">
+	</div>
+	<script>
+		document.querySelector('p').onclick=function(){
+			alert('你愁啥!')
+		}
+	</script>
+  </body>
+</html>

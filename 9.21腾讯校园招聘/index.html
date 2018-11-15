@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./scss/style.css">
+</head>
+<body>
+  <div class="bg">
+    <div class="bg-item bg_0  "></div>
+    <div class="wave">
+      <div class="item item_0"></div>
+      <div class="item item_1"></div>
+      <div class="item item_2"></div>
+      <div class="item item_3"></div>
+      <div class="item item_4"></div>
+      <div class="item item_5"></div>
+      <div class="item item_6"></div>
+      <div class="item item_7"></div>
+      <div class="item item_8"></div>
+    </div>
+    <div class="bg-item bg_1  "></div>
+    <div class="bg-item bg_2  " ></div>
+    <div class="bg-item bg_3  "></div>
+  </div>
+  <div class="header">
+      <a href="/" class="logo"></a>
+      <ul class="nav">
+          <li class="active"><a href="/">首页</a></li>
+          <li><a href="javascript:void(0);" onclick="showPositionBanner();">岗位详情</a></li>
+          <li><a href="news.php">通知动态</a></li>
+          <li><a href="about.php">了解腾讯</a></li>
+          <li><a href="video.php">视频干货</a></li>
+      </ul>
+    </div>
+  <div class="container">
+
+            <div class="member">
+                      <a id="btn_login" href="javascript:" onclick="showptlogin();">登录</a>
+                  </div>
+
+    <div class="banners">
+      <!-- 圆球和图片slogan_title -->
+      <!-- display:none; 让第一屏的内容先隐藏style="display:none;"-->
+        <div data-id="0" class="banner news active" >
+          <!-- 球的动画 -->
+            <div class="slogan animated bounceIn"></div>
+            <div class="slogan_title animated bounceIn"></div>
+            <!-- timeline_1 表示显示时间轴的第一阶段；timeline_2 表示显示时间轴的第二阶段…… -->
+            <!--<div class="timeline timeline_3 animated bounceIn"></div>-->
+            <div class="timeline timeline_3 animated bounceIn">
+                <div class="wrap_timeline">
+                    <div class="wrap_process_bar">
+                        <div class="wrap_process_circle">
+                            <div class="process_circle"></div>
+                        </div>
+                    </div>
+                    <div class="wrap_timeline_text">
+                            <div class="time_point"><div class="data">7.25-9.12</div><div class="process">网申</div></div>
+                            <div class="time_point"><div class="data">7.25-9.14</div><div class="process">提前批</div></div>
+                            <div class="time_point" style = "color: rgb(255, 242, 0);"><div class="data">9.16-9.17</div><div class="process">在线笔试</div></div>
+                            <div class="time_point"><div class="data">9.26</div><div class="process">起面试</div></div>
+                    </div>
+                </div>
+            </div>
+            <div class = "btns">
+                <a class="btn btn_s" href="#">投递简历</a>
+                <a class="btn btn_k" href="#">流程</a>
+            </div>
+        </div>
+        <div data-id="1" class="banner jobs " >
+          <div class="wrap_jobs">
+            <div class="wrap_job  left" >
+                <div class="wrap_job_bg_left wrap_job_bg ">
+                    <div class="job_bg job_bg_left" id="job_bg_left" ></div>
+                </div>
+                <div class="job_post post_left" id="post_left">
+                    <h2 class="job_title job_title_left"></h2>
+                    <ul class="job_list job_list_left">
+                        <li><a href="#">校园招聘</a></li>
+                        <li><a href="#" target="_blank">MBA招聘</a></li>
+                        <li><a href="#" target="_blank">投资公司校园招聘</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="wrap_jod wrap_job_right  right" >
+              <div class="wrap_job_bg_right wrap_job_bg">
+               <div class="job_bg job_bg_right" id="job_bg_right"></div>
+              </div>
+             <div class="job_post post_right" id="post_right">
+                 <h2 class="job_title job_title_right"></h2>
+                 <ul class="job_list job_list_right">
+                     <li><a class="t"  href="post.php?pid=2">暑期实习</a></li>
+                     <li><a href="post.php?pid=3">MINI实习</a></li>
+                     <li><a href="post.php?pid=4">日常实习</a></li>
+                 </ul>
+               </div>
+             </div>
+          </div>
+        </div>
+        <div data-id="2" class="banner wrap_talks" >
+          <div class= "cont_talks">
+            <div class="item bg_talks animated slideInRight">
+
+            </div>
+          </div>
+
+        </div>
+        <div class="btns_slider">
+          <a href="#" class="btn btn_prev" onclick='handleClick()' style="display:inline;"></a>
+          <a href="#" class="btn btn_next" onclick='handleClick(true)' style="display:block;"></a>
+        </div>
+      </div>
+  </div>
+  <div class="wrap_buttons">
+      <div class="sm">
+        <div id="buttons_i" class="i active_0"></div>
+      </div>
+      <ul class="buttons" id="buttons">
+        <!-- 底部三个点击事件 -->
+        <a href="#" ><li data-id="0"  class="item">校招动态</li></a>
+          <!-- <li data-id="0"  class="item">校招动态</li> -->
+          <a href="#"><li data-id="1"  class="item">在招岗位</li></a>
+          <!-- <li data-id="1"  class="item">在招岗位</li> -->
+          <a href="#"  ><li data-id="2"  class="item">鹅厂WO谈会</li></a>
+          <!-- <li data-id="2"  class="item">鹅厂WO谈会</li> -->
+          <li class="mask"></li>
+          <!-- <a href="#" class="mask"></a> -->
+      </ul>
+    </div>
+    <script>
+// 底部三个点击事件
+        var buttons_li = document.querySelectorAll("#buttons .item");
+        console.log(buttons_li);
+        // var  anniu  = document.querySelectorAll("#buttons .item");
+
+    // 监听container,监听所有banner的状态赋值给bannerA;
+        var container = document.querySelector('.container');
+        var bannerA = document.querySelectorAll('.banner');
+        // mask鼠标点击滑动事件
+        var mask = document.querySelector('.mask');
+      // 先声明变量buttons_i,获取需要操作的节点;
+        // var buttons_i = document.querySelector("#buttons_i");
+        var anniu = document.querySelector("#buttons_i");
+        console.log(anniu);//打印获取节点是否成功;
+        //声明获取宽度变量buttons_iW,获取宽度;
+        var buttons_iW = buttons_i.offsetWidth;
+        console.log(buttons_iW);//打印查看宽度
+        var itemW = mask.offsetWidth;
+        let count = 0;
+        var timer;
+        // 声明一个函数nav,获取宽度判断
+        nav_click();//调用函数
+        function nav_click(){
+          for(let i = 0; i<buttons_li.length; i++){
+              buttons_li[i].onclick = function(){
+                console.log("1,2,3");
+                count = i;
+                nav(count);//调用函数
+              }
+          }
+        }
+        function nav(count){
+            buttons_i.style.left = count*buttons_iW+"px";
+        }
+        // 点击事件
+        handleClick=function(isR){
+            if(isR){
+                count++;
+                if(count>= bannerA.length-1){
+                    count= bannerA.length-1
+                }
+                console.log(count)
+            }else{
+                count--;
+                if(count<=0){
+                    count = 0;
+                }
+            }
+            go(count);
+            nav(count);
+        }
+        function go(count){
+            for(var i = 0 ; i <  bannerA.length ; i ++){
+                 bannerA[i].classList.remove('active')
+            }
+            mask.style.left = count*itemW+'px';
+             bannerA[count].classList.add('active')
+        }
+    windowAddMouseWheel();
+    function windowAddMouseWheel() {
+    var scrollFunc = function (e) {
+        e = e || window.event;
+        if (e.wheelDelta) {  //判断浏览器IE，谷歌滑轮事件
+            if (e.wheelDelta > 0) { //当滑轮向上滚动时
+                clearTimeout(timer)
+                timer = setTimeout(function(){
+                    handleClick()
+                },50)
+            }
+            if (e.wheelDelta < 0) { //当滑轮向下滚动时
+                clearTimeout(timer)
+                timer = setTimeout(function(){
+                    handleClick(true)
+                },50)
+            }
+        } else if (e.detail) {  //Firefox滑轮事件
+            if (e.detail> 0) { //当滑轮向上滚动时
+                handleClick()
+            }
+            if (e.detail< 0) { //当滑轮向下滚动时
+                handleClick(true)
+            }
+        }
+    };
+    //给页面绑定滑轮滚动事件
+    if (document.addEventListener) {
+        document.addEventListener('DOMMouseScroll', scrollFunc, false);
+    }
+    //滚动滑轮触发scrollFunc方法
+    window.onmousewheel = document.onmousewheel = scrollFunc;
+    }
+    </script>
+
+
+
+</body>
+</html>

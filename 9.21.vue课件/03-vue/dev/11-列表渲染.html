@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="lib/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<li v-for="item in names">{{item}}</li>
+		</ul>
+		<hr><hr>
+		<ul>
+			<li v-for="(item,index) in names">{{index}}==>{{item}}</li>
+		</ul>
+		<hr><hr>
+		<!-- v-for进行遍历的时候 最好加上 key属性 -->
+		<p v-for="(v,key,index) in user" :key="index">{{index}}==>{{key}}==>{{v}}</p>
+	</div>
+	<script>
+		var vue = new Vue({
+			el:'#app',
+			data:{
+				names:[
+					'张三',
+					'李四',
+					'王五',
+					'赵c'
+				],
+				user:{
+					name:'尼古拉斯',
+					sex:true,
+					age:33
+				}
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>def</h1>
+	<form>
+		用户名:<input type="text" class="username" name="username"><br>
+		age: <input type="text" class="age" name="age">
+		<button class="sub" type="button">保存</button>
+	</form>
+
+	<script>
+		//把表单的提交形式改为ajax形式
+		var btn = document.querySelector('.sub')
+		btn.onclick = function(){
+			var username = document.querySelector('.username').value;
+			var age = document.querySelector('.age').value;
+			var xhr = new XMLHttpRequest();
+			//get请求的参数  在地址栏 形式: xxx?key1=v1&key2=v2&key3=v3...
+			// 提交的时候一般使用post 
+			xhr.open('get',`/saveUser?username=${username}&age=${age}`);
+			xhr.send(null);
+			xhr.onreadystatechange = function(){
+				if (xhr.readyState == 4 && xhr.status == 200) {
+					//注意: 原生ajax返回的数据类型是字符串
+					var rs = xhr.responseText;
+					//转成对象模式
+					var rsObj = JSON.parse(rs);
+					if(rsObj.err == 0){
+						alert('保存成功!');
+					}else{
+						alert('保存失败!');
+					}
+				}
+			}
+		}
+	</script>
+</body>
+</html>

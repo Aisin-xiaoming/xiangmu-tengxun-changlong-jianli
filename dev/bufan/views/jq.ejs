@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+</head>
+<body>
+	<input type="number" class="userId">
+	<button class="btn">获取用户信息</button>
+	<button class="del">删除</button>
+	<button class="edit">修改用户</button>
+	<p class="userInfo"></p>
+	<hr>
+	<hr>
+	用户名:<input type="text" class="username"><br>
+	年龄:<input type="number" class="age"><br>
+	<button class="sub">提交</button><br>
+	<script src="/lib/jquery.min.js"></script>
+	<script>
+		
+		$('.btn').click(function(){
+			var userId = $('.userId').val();
+			// jq的ajax封装
+			$.ajax({
+				type: 'get',
+				url:'/userById',
+				data: `id=${userId}&ts=${new Date().getTime()}`,
+				success:function(res){
+					if(res.user.name){
+						$('.userInfo').text(res.user.name+'___'+res.user.age)
+					}else{
+						alert('没有!')
+					}
+				}
+			})
+		})
+		$('.sub').click(function(){
+			var username = $('.username').val();
+			var age = $('.age').val();
+			$.ajax({
+				type:'post',
+				url:'/saveUser',
+				data: `username=${username}&age=${age}`,
+				success:function(res){
+					if(res.err>0){
+						alert(`保存成功!id为:${res.err}`);
+					}else{
+						alert('保存失败!');
+					}
+				}
+			})
+		})
+		$('.del').click(function(){
+			var delId = $('.userId').val();
+			//删除get  ajax一般默认的是get请求
+			$.ajax({  
+				type:'get',
+				url:'/del',
+				data: `userId=${delId}`,
+				success: function(res){
+					if(res.msg == 'success'){
+						alert('删除成功!')
+					}else{
+						alert('删除失败!')
+					}
+				}
+			})
+		})
+	</script>
+</body>
+</html>

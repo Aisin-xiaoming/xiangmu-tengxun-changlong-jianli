@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+
+    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+    	*{
+    		margin: 0;
+    		padding: 0;
+    	}
+    	.content{
+    		height: 500px;
+    	}
+    	.content.container{
+    		padding: 0;
+    	}
+    	.content .aside{
+    		box-sizing: border-box;
+    	}
+    	.content .aside .nav-pills{
+    		border: 1px solid #337ab7;
+    	}
+    	.content .content-main{
+    		height: 100%;
+    	}
+    	.content-main .panel-footer .pagination{
+			margin: 0;
+    	}
+    	@media (max-width: 768px){
+    		.content .content-main{
+    			margin-top: 20px;
+    		}
+    	}
+    	.table tr td:last-child{
+    		width:200px;
+			text-align: center;
+    	}
+    	.table .loading{
+    		display: inline-block;
+    		transform: scale(1);
+    		animation: loading 1s ease infinite both;
+    	}
+    	@keyframes loading{
+    		0%{
+    			color: orange;
+				transform: scale(.8);
+    		}
+    		100%{
+    			color: #333;
+				transform: scale(1.2);
+    		}
+    	}
+    </style>
+  </head>
+  <body>
+  	<!-- nav是html5的新标签 语义化 -->
+	<nav class="navbar navbar-default">
+	  <div class="container">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	    	<!-- 自定义属性 -->
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="#">不凡学院</a>
+	    </div>
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav">
+	        <li class="active"><a href="#">官方首页<span class="sr-only">(current)</span></a></li>
+	        <li><a href="#">数据字典</a></li>
+	      </ul>
+	      <form class="navbar-form navbar-left">
+	        <div class="form-group">
+	          <input type="text" class="form-control" placeholder="Search">
+	        </div>
+	      </form>
+	      <ul class="nav navbar-nav navbar-right">
+	        <li><a href="#">锁屏</a></li>
+	        <li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown">设置 <span class="caret"></span></a>
+	          <ul class="dropdown-menu">
+	            <li><a href="#">账号</a></li>
+	            <li><a href="#">个人中心</a></li>
+	            <li><a href="#">邮箱</a></li>
+	            <li role="separator" class="divider"></li>
+	            <li><a href="#">退出</a></li>
+	          </ul>
+	        </li>
+	      </ul>
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+	<div class="content container">
+		<div class="aside col-md-3">
+			<ul class="nav nav-pills nav-stacked">
+			  <li role="presentation" class="active"><a href="#">Home</a></li>
+			  <li role="presentation"><a href="#">Profile</a></li>
+			  <li role="presentation"><a href="#">Messages</a></li>
+			</ul>
+		</div>
+		<div class="content-main col-md-9">
+			<div class="panel panel-info">
+			  <div class="panel-heading">搜索条件</div>
+			  <div class="panel-body">
+			    <form class="form-inline col-md-12">
+			      <div class="form-group">
+			        <label class="sr-only" for="exampleInputEmail3">用户名</label>
+			        <input type="email" class="form-control" id="exampleInputEmail3" placeholder="用户名">
+			      </div>
+			      <div class="form-group">
+			        <label class="sr-only" for="exampleInputPassword3">性别</label>
+			        <input type="password" class="form-control" id="exampleInputPassword3" placeholder="性别">
+			      </div>
+			      <button type="submit" class="btn btn-default">搜索</button>
+			    </form>
+			  </div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+				<!-- 	<button type="button" class="btn btn-success"  data-toggle="modal" data-target="#myModal">添加</button> -->
+				<button type="button" class="btn btn-success" onclick="add()">添加</button>
+				</div>
+			  <div class="panel-body">
+			    <table class="table table-striped table-bordered table-hover">
+			    	<tr>
+			    		<th>序号</th>
+			    		<th>姓名</th>
+			    		<th>电话</th>
+			    		<th>操作</th>
+			    	</tr>
+			    	<tr>
+			    		<td colspan="4" align="center"><span class="loading">正在加载...</span></td>
+			    	</tr>
+			    </table>
+
+			  </div>
+			  <div class="panel-footer">
+			  	  <ul class="pagination">
+			  	    <li>
+			  	      <a href="#" aria-label="Previous">
+			  	        <span aria-hidden="true">&laquo;</span>
+			  	      </a>
+			  	    </li>
+			  	    <li><a href="#">1</a></li>
+			  	    <li><a href="#">2</a></li>
+			  	    <li><a href="#">3</a></li>
+			  	    <li><a href="#">4</a></li>
+			  	    <li><a href="#">5</a></li>
+			  	    <li>
+			  	      <a href="#" aria-label="Next">
+			  	        <span aria-hidden="true">&raquo;</span>
+			  	      </a>
+			  	    </li>
+			  	  </ul>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModal">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">添加用户</h4>
+	      </div>
+	      <div class="modal-body">
+	        <form>
+	        	<!-- 一个隐藏域 -->
+	        	<input type="hidden" id="id">
+	          <div class="form-group">
+	            <label for="username">用户名</label>
+	            <input type="text" class="form-control" id="username" placeholder="用户名">
+	          </div>
+	          <div class="form-group">
+	            <label for="tel">电话号码</label>
+	            <input type="text" class="form-control" id="tel" placeholder="电话号码">
+	          </div>
+
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default btn-cancel" data-dismiss="modal">取消</button>
+	        <button type="button" onclick="doSave()"  class="btn btn-primary btn-save">保存</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+    <script src="/lib/jquery.min.js"></script>
+    <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+    	//编辑的行数
+    	var currentTr = null;
+    	//页面加载完毕 在js中调用 发送请求
+    	initTable();
+    	function initTable(){
+    		$.ajax({
+    			url: '/userListAjax',
+    			type:'get',
+    			success: function(res){
+    				console.log(res);
+    				var str = '';
+    				for(var i = 0 ; i < res.length ; i ++){
+    					var user = res[i];
+    					str += `<tr>
+				    		<td>${i+1}</td>
+				    		<td data-id=${user.id}>${user.name}</td>
+				    		<td>${user.tel}</td>
+				    		<td>
+				    			<div class="btn-group" role="group">
+				    			  <button type="button" class="btn  btn-xs btn-primary">查看</button>
+				    			  <button type="button" class="btn  btn-xs btn-success" onclick="edit(this)">编辑</button>
+				    			  <button type="button" class="btn  btn-xs btn-danger" onclick="del(this)">删除</button>
+				    			</div>
+				    		</td>
+			    		</tr>`
+    				}
+    				$('.table').append(str);
+    				$('.table .loading').parents('tr').hide();
+
+    			}
+    		})
+    	}
+      // 删除按钮
+      function del(obj){
+    		//通过按钮 找到父类中的tr
+    		var $tr = $(obj).parents('tr');
+    		//$tr[0] ==> jq对象转dom原生对象
+    		console.log($tr[0]);
+    		$tr.remove();
+    	}
+
+    	function add(){
+    		$('#id').val('');
+    		$('#username').val('');
+			$('#tel').val('');
+    		// 1.打开模态窗
+    		$('#myModal').modal('show');
+    	}
+
+    	function doSave(){
+    		//怎么区分是添加还是编辑?
+    		var username = $('#username').val();
+    		var tel = $('#tel').val();
+    		var id = $('#id').val();
+    		//存在 编辑
+    		if(id){
+    			$.ajax({
+    				url:'/updateUser2',
+    				type: 'post',
+    				data: {id:id,username:username,tel:tel},
+    				success:function(res){
+    					if(res=='success'){
+    						//动态修改刚才的tr的数据
+    						currentTr.children().eq(1).text(username);
+    						currentTr.children().eq(2).text(tel);
+    						//清空临时变量
+    						currentTr = null;
+    						$('#myModal').modal('hide');
+    					}else{
+    						alert('修改失败!');
+    					}
+    				}
+    			})
+    		}else{
+	    		$.ajax({
+	    			url:'/saveUser2',
+	    			type: 'post',
+	    			data: {username:username,tel:tel},
+	    			success:function(res){
+	    				if(res.err!=-1){
+	    					//清空表单 方便再次使用!
+	    					$('#username').val('');
+	    					$('#tel').val('');
+	    					$('#myModal').modal('hide');
+	    					//把最后一条动态添加进去
+							appendLastOne({id:res.id,username:username,tel:tel});
+
+	    				}else{
+	    					alert('插入失败!');
+	    				}
+	    			}
+	    		})
+    		}
+
+    	}
+    	/**
+    	* 动态给表格添加最后一条信息
+    	**/
+    	function appendLastOne(user){
+    		//jq 简单粗暴
+    		var index = $('.table tr').last().children().eq(0).text();
+    		str = `<tr>
+				    		<td>${parseInt(index)+1}</td>
+				    		<td  data-id=${user.id}>${user.username}</td>
+				    		<td>${user.tel}</td>
+				    		<td>
+				    			<div class="btn-group" role="group">
+				    			  <button type="button" class="btn  btn-xs btn-primary">查看</button>
+				    			  <button type="button" class="btn  btn-xs btn-success" onclick="edit(this)">编辑</button>
+				    			  <button type="button" class="btn  btn-xs btn-danger" onclick="del(this)">删除</button>
+				    			</div>
+				    		</td>
+			    		</tr>`;
+    		$('.table').append(str);
+    	}
+
+    	function edit(obj){
+    		// tr的jq对象
+    		var $tr = $(obj).parents('tr');
+    		//外部保存临时编辑的tr
+    		currentTr = $tr;
+    		//获取tr的自定义属性
+    		var id = $tr.children().eq(1).data('id');
+    		var username = $tr.children().eq(1).text();
+    		var tel = $tr.children().eq(2).text();
+    		//给表单赋值
+    		$('#id').val(id);
+    		$('#username').val(username);
+    		$('#tel').val(tel);
+    		// 1.打开窗口
+    		$('#myModal').modal('show');
+    		//2.设置表单的值
+
+    	}
+    </script>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="lib/vue.js"></script>
+	<style>
+		.danger{
+			color: red;
+		}
+		.font-border{
+			border: 1px solid green;
+		}
+		.italic{
+			font-style: italic;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="app">
+		<!-- danger是否显示 跟 isDanger的变量有关系 -->
+		<h2 :class="{danger:isDanger,'font-border':isBorder}" class="italic">{{title}}</h2>
+		<hr>
+		<!-- 注意: 在v-bind:指令中 所有的代码都是js代码 -->
+		<h2 :class="[classList1,'italic']">{{title}}</h2>
+		<button @click="toggleDanger">状态切换</button>
+		<button @click="toggleBorder">边框切换</button>
+
+		<hr>
+		<p>行内样式</p>
+		<hr>
+		<!-- 注意: 为什么需要v-bind绑定class和style? 只有这样才能通过js动态修改style和class的值 -->
+		<p :style="{color:titleColor,fontSize:'30px'}" @click="changeGreen">{{title}}</p>
+	</div>
+	<script>
+		var vm = new Vue({
+			el:'#app',
+			data:{
+				title:'不凡学院',
+				isDanger: false,
+				isBorder: false,
+				titleColor: 'red',
+				// classList1:{danger:this.isDanger,'font-border':this.isBorder}
+			},
+			methods:{
+				toggleDanger: function () {
+					// this.classList1.danger = !this.classList1.danger;
+					this.isDanger = !this.isDanger;
+				},
+				toggleBorder: function () {
+					// document.querySelector('p').classList.remove('italic');
+					this.isBorder = !this.isBorder;
+				},
+				changeGreen: function () {
+					this.titleColor = 'green';
+				}
+			},
+			computed:{
+				classList1:function () {
+					return {danger:this.isDanger,'font-border':this.isBorder};
+				}
+			}
+		})
+	</script>
+</body>
+</html>

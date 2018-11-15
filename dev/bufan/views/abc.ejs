@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p>这是 <%= title %></p>
+	<p>这是 <%= name %></p>
+	<p>当前时间为:  <%= time %></p>
+	<button class="btn">更新数据</button>
+	<p class="newtime"></p>
+	<table class="user-table">
+		<tr>
+			<th>姓名</th>
+			<th>年龄</th>
+		</tr>
+	</table>
+	<hr>
+	<!-- h5 number -->
+	<input type="number" class="userId" placeholder="请输入用户id"><br>
+	<button class="btn2">根据id获取对象</button>
+	<a href="/ghi">跳转到添加页面</a>
+	<script>
+		var btn = document.querySelector('.btn');
+		var btn2 = document.querySelector('.btn2');
+		btn.onclick = function(){
+			// //可以通过js强制跳转页面
+			// window.location.href = '/abc'
+			// 1.ajax 依赖 XMLHttpRequest对象
+			var xhr = new XMLHttpRequest();
+			// 2. 第一个参数 请求类型GET/POST ,第二个参数 请求地址
+			var url = 'https://bufanui.com/api/users/list';
+			xhr.open('get',url);
+			// 3. get方式 seng发送null  
+			xhr.send(null);
+			// 4. 等待状态
+			xhr.onreadystatechange = function(){
+				//如果readyState==4 
+				 if (xhr.readyState == 4 && xhr.status == 200) {
+				 	//5.通过responseText获取响应结果
+				 	//注意: ajax返回的结果都是字符串!!!
+	                 var rs = xhr.responseText;
+	                 console.log('相应结果为:');
+	                 console.log(rs);
+	                 // document.querySelector('.newtime').innerText = rs;
+	                 var str = '';
+	                 //可以把字符串转换为对象
+	                 var users = JSON.parse(rs);
+	                 for(var i = 0 ;i < users.length ; i ++){
+	                 	str += `<tr>
+	                 			<td>${users[i].name}</td>
+								<td>${users[i].age}</td>
+	                 	</tr>`
+	                 }
+	                 document.querySelector('.user-table').innerHTML = str;
+	             }
+		 	}
+		}
+		btn2.onclick = function(){
+			var userId = document.querySelector('.userId').value;
+			var xhr = new XMLHttpRequest();
+			//get请求的参数  在地址栏 形式: xxx?key1=v1&key2=v2&key3=v3...
+			xhr.open('get',`/userById?id=${userId}`);
+			xhr.send(null);
+			xhr.onreadystatechange = function(){
+				if (xhr.readyState == 4 && xhr.status == 200) {
+					var rs = xhr.responseText;
+					var user = JSON.parse(rs);
+					console.log(user);
+				}
+			}
+		}
+
+	</script>
+</body>
+</html>

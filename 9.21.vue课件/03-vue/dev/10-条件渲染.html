@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="lib/vue.js"></script>
+</head>
+<body>
+	
+	<div id="app">
+		<p v-if="sex">不凡君</p>
+		<p v-else>不凡酱</p>
+		<hr>
+		<input type="text" v-model="type">
+		<div v-if="type === 'A'">
+		  阿童木
+		</div>
+		<div v-else-if="type === 'B'">
+		  布鲁斯
+		</div>
+		<div v-else-if="type === 'C'">
+		  Cate
+		</div>
+		<div v-else>
+		  Not A/B/C
+		</div>
+		<hr>
+		<!-- 问题:为什么明明切换了 但表单好像没有变化?
+			这里牵涉底层复杂的机制. 
+			vue为了渲染效率最高,引入了虚拟dom-->
+			<!-- 同一个组件多次渲染相互切换需要给每个组件设置相同的key -->
+		<template v-if="loginType === 'username'">
+		  <label>Username</label>
+		  <input placeholder="Enter your username" key="username">
+		</template>
+		<template v-else>
+		  <label>Email</label>
+		  <input placeholder="Enter your email address" key="address">
+		</template>
+		<button @click="changeInput">改变输入框</button>
+		<hr>
+		<!-- v-if和v-show的区别? 简单来说 v-if 彻底不渲染,v-show display:none -->
+		<h2 v-show="show">{{'欢迎来到不凡学院!'}}</h2>
+		<button @click="show=!show">toggleShow</button>
+	</div>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				sex:false,
+				type:'',
+				loginType: 'username',
+				show:true
+			},
+			methods:{
+				changeInput: function () {
+					if(this.loginType === 'username'){
+						this.loginType = 'address'
+					}else{
+						this.loginType = 'username'
+					}
+				}
+			}
+		})
+	</script>
+
+</body>
+</html>

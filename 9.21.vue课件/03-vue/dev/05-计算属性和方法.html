@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="lib/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p>计算属性翻转字符串: {{reverseMsg}}</p>
+		<!-- 函数也可以实现计算属性的效果,但是一般不这么用! -->
+		<p>方法翻转字符串: {{_reverseMsg()}}</p>
+		<!-- 函数一般用于方法调用 -->
+		<button @click="_reverseMsg2">还原</button>
+	</div>
+
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				msg: 'It is a fineday today !'
+			},
+			computed:{
+				reverseMsg: function  () {
+					return this.msg.split(' ').reverse().join(' ');
+				}
+			},
+			methods:{
+				_reverseMsg: function () {
+					// this.msg += ' 啊 吧 从';
+					return this.msg.split(' ').reverse().join(' ');
+				},
+				_reverseMsg2: function () {
+					this.msg = this.msg.split(' ').reverse().join(' ');
+				}
+			}
+		})
+	</script>
+</body>
+</html>

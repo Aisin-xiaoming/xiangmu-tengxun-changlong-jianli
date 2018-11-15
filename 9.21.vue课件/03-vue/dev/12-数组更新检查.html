@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="lib/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p v-for="n in arr">{{n}}</p>
+		<button @click="add">追加</button>
+		<button @click="changeFirst">改变下标为0的值</button>
+		<hr>
+		显示>5的值 
+		<ul>
+			<li v-for="n in arr" v-if="n>5">{{n}}</li>
+		</ul>
+	</div>
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				arr:[1,2,3,5,8,10]
+			},
+			methods:{
+				add:function () {
+					this.arr.push(Math.floor(Math.random()*100));
+				},
+				changeFirst:function () {
+					//既然说 数据双向绑定,为什么修改了下标为0的值而页面没有响应?
+					// 由于 JavaScript 的限制，Vue 不能检测以下变动的数组：
+
+					// 当你利用索引直接设置一个项时，例如：vm.items[indexOfItem] = newValue
+					// 当你修改数组的长度时，例如：vm.items.length = newLength
+					// this.arr[0] = 99;
+					// splice可以删除/替换某个/些数据
+					this.arr.splice(0,1,99);
+					console.log(this.arr)
+				}
+			}
+		})
+	</script>
+</body>
+</html>

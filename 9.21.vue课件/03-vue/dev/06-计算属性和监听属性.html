@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="lib/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-model="lastName">
+		<p>{{firstName}} · {{lastName}}</p>
+		<p>{{firstName}} · {{lastName}}</p>
+		<hr>
+		<p>计算属性获取全名: {{fullName}}</p>
+	</div>
+
+	<script>
+		// var firstName = '张三';
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				firstName:'尼古拉斯',
+				lastName: '赵四',
+				// fullName: '尼古拉斯·赵四'
+			},
+			computed:{
+				// 在计算属性里能进行耗时操作吗? 也可以.但是不提倡!
+				fullName: function () {
+					// setTimeout(()=>{
+					// 	this.firstName = '爱新觉罗';
+					// },2000);
+					return this.firstName + ' · '+ this.lastName;
+					// return 'abc';
+				}
+			},
+			// 监听属性: 监听某个属性的变化,并获取新值和旧值
+			// 一般用于耗时操作
+			// watch:{
+			// 	lastName: function (nv,ov) {
+			// 		console.log('nv===>'+nv);
+			// 		console.log('ov===>'+ov);
+			// 		setTimeout(()=>{
+			// 			//目前用于模拟 比如网络请求等耗时操作.
+			// 			this.fullName = this.firstName+'·'+nv;
+			// 		},2000);
+			// 	}
+			// }
+
+			
+		})
+	</script>
+</body>
+</html>
